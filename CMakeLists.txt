@@ -12,17 +12,17 @@ option(BUILD_DEMO OFF)
 
 find_package( OpenCV REQUIRED )
 
-# Install rules
-install(TARGETS ${LIB_NAME} gtest_main
-    DESTINATION lib)
-install(DIRECTORY ${SRC_DIR}/include
-    DESTINATION include)
-
 # Add the EGBIS algortihm
 FILE(GLOB_RECURSE EGBIS_SRC ${SRC_DIR}/src/*.cpp)
 include_directories(${SRC_DIR}/include)
 
 add_library(${LIB_NAME} STATIC ${EGBIS_SRC})
+
+# Install rules
+install(TARGETS ${LIB_NAME} gtest_main
+    DESTINATION lib)
+install(DIRECTORY ${SRC_DIR}/include
+    DESTINATION include)
 
 if (BUILD_DEMO)
     add_executable( main demo/main.cpp ${EGBIS_SRC})
