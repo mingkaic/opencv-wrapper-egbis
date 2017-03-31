@@ -20,9 +20,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 */
 #include "egbis.h"
 #include <opencv2/opencv.hpp>
-#include "egbis/segment-image.h"
-#include "egbis/misc.h"
-#include "egbis/image.h"
+#include "segment-image.h"
+#include "misc.h"
+#include "image.h"
 
 /****
  * OpenCV C++ Wrapper using the Mat class

@@ -1,10 +1,24 @@
 cmake_minimum_required(VERSION 2.8)
 project( OCVE )
 
-# Add the EGBIS algortihm
-# add_subdirectory(egbis)
+set(LIB_NAME egbis)
+set(SRC_DIR ${PROJECT_SOURCE_DIR}/egbis)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
+option(BUILD_DEMO OFF)
 
 find_package( OpenCV REQUIRED )
-add_executable( main main.cpp egbis.h egbis.cpp egbis/segment-image.cpp egbis/segment-image.h egbis/segment-graph.cpp egbis/segment-graph.h egbis/disjoint-set.cpp egbis/disjoint-set.h egbis/image.h egbis/filter.cpp egbis/filter.h egbis/misc.cpp egbis/misc.h)
-target_link_libraries( main ${OpenCV_LIBS} )
 
+# Add the EGBIS algortihm
+FILE(GLOB_RECURSE EGBIS_SRC ${SRC_DIR}/src/*.cpp)
+include_directories(${SRC_DIR}/include)
+
+add_library(${LIB_NAME} STATIC ${EGBIS_SRC})
+
+if (BUILD_DEMO)
+    add_executable( main demo/main.cpp ${EGBIS_SRC})
+    target_link_libraries( main ${OpenCV_LIBS} )
+endif (BUILD_DEMO)

@@ -17,3 +17,8 @@ lib*
 *.o
 tempImage.jpg
 egbisImage.jpg
+
+cmake*
+.*
+!.gitignore
+bin
