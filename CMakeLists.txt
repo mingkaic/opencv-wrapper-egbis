@@ -19,7 +19,7 @@ include_directories(${SRC_DIR}/include)
 add_library(${LIB_NAME} STATIC ${EGBIS_SRC})
 
 # Install rules
-install(TARGETS ${LIB_NAME} gtest_main
+install(TARGETS ${LIB_NAME} egbis
     DESTINATION lib)
 install(DIRECTORY ${SRC_DIR}/include
     DESTINATION include)
