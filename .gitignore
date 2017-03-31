@@ -18,7 +18,7 @@ lib*
 tempImage.jpg
 egbisImage.jpg
 
-cmake*
+cmake-build-*
 .*
 !.gitignore
 bin
